@@ -11,7 +11,7 @@ app = Flask(__name__)
 # End point to recieve images
 @app.route('/')
 def index():
-    return "Pillcount server is running!"
+    return {"debug": "Pillcount server is running!"}
 
 # End point to recieve images
 @app.route('/api/yolov4', methods=['POST'])
@@ -53,5 +53,5 @@ def yolov5():
 if __name__ == '__main__':
     model = torch.hub.load('ultralytics/yolov5', 'custom', path='model/best.pt')
     model.eval()
-    app.run()
+    app.run(host="0.0.0.0", debug=True, port=5000)
     
