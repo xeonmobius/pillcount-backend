@@ -3,7 +3,6 @@ from flask_cors import cross_origin
 import torch 
 import cv2
 import util.base64_util as b64_util
-from waitress import serve
 
 
 app = Flask(__name__)
@@ -12,7 +11,7 @@ app = Flask(__name__)
 # End point to recieve images
 @app.route('/')
 def index():
-    return "Flask server is running!"
+    return "Pillcount server is running!"
 
 # End point to recieve images
 @app.route('/api/yolov4', methods=['POST'])
