@@ -53,5 +53,5 @@ def yolov5():
 if __name__ == '__main__':
     model = torch.hub.load('ultralytics/yolov5', 'custom', path='model/best.pt')
     model.eval()
-    app.run(host='0.0.0.0', port=5000)
+    app.run()
     
