@@ -1,6 +1,10 @@
+DockerFile
+.gitignore
+.git
 Scripts/
-__pycache__/
-Lib/
-utils/
-models/
-
+__pycache__
+Procfile
+Lib
+.vscode
+pvenv.cfg
+test.jpg

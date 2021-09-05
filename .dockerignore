@@ -4,3 +4,7 @@ DockerFile
 Scripts/
 __pycache__
 Procfile
+Lib
+.vscode
+pvenv.cfg
+test.jpg

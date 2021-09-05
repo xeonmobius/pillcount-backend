@@ -5,17 +5,17 @@ FROM bitnami/python:3.9-prod
 EXPOSE 5000
 
 # Create our work dir
-WORKDIR /flask
+WORKDIR /pillcount-backend
 
 # Copy files to workdir
-COPY . /flask
+COPY . /pillcount-backend
 
 # Run all our shell commands
 RUN apt-get update \ 
     && apt-get install -y --no-install-recommends \
-    libgl1 libglib2.0-0\
+    libgl1 libglib2.0-0 \
     && rm -rf /var/lib/apt/lists/* \
     && pip install torch==1.9.0+cpu torchvision==0.10.0+cpu -f https://download.pytorch.org/whl/torch_stable.html \                                
-    && pip install -r requirements.txt
+    && pip install -r requirements.txt 
 
-CMD ["gunicorn", "-b", "0.0.0.0:5000", "main:app", "-w", "4"]
+CMD ["gunicorn", "-b", "0.0.0.0:5000", "main:app", "-w", "1"]
