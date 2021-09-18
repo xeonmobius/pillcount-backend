@@ -8,3 +8,5 @@ Lib
 .vscode
 pvenv.cfg
 test.jpg
+!/landing_page/docs
+*/landing_page/

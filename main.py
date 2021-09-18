@@ -1,11 +1,11 @@
-from flask import Flask, request
+from flask import Flask, request, send_from_directory
 from flask_cors import cross_origin, CORS
 import torch
 import cv2
 import util.base64_util as b64_util
+import os
 
-
-app = Flask(__name__)
+app = Flask(__name__, static_folder='landing_page/docs')
 cors = CORS(app)
 
 # Load our yolov5 model ++++ ALWAYS MAKE FORCE RELOAD TRUE OTHER WISE THE MODEL LOADING WILL FAIL!!!!!!
@@ -15,10 +15,14 @@ model = torch.hub.load(
 )
 model.eval()
 
-# End point to recieve images
-@app.route("/")
-def index():
-    return "Pillcount server is running!"
+# End point to recieve images# Serve React App
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def serve(path):
+    if path != "" and os.path.exists(app.static_folder + '/' + path):
+        return send_from_directory(app.static_folder, path)
+    else:
+        return send_from_directory(app.static_folder, 'index.html')
 
 
 # End point for yolo to recieve images
