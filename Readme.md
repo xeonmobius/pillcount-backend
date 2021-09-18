@@ -1,6 +1,5 @@
 # Pillcount
 
-![Logo][/assets/splash_pillcount.png]
 
 ## Description
 ### What the application does
